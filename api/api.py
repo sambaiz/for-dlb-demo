@@ -1,14 +1,20 @@
 from flask import Flask
+from flask_cors import CORS
 import torch
 import model
 import json
 
 app = Flask(__name__)
+CORS(app)
 
-vae = model.VAE()
+vae = model.VAE(6, 2)
 vae.load_state_dict(torch.load('./saved/vae'))
 estimator = model.Estimator()
 estimator.load_state_dict(torch.load('./saved/estimator'))
+
+@app.route("/ping", methods=['GET'])
+def ping():
+    return 'ok'
 
 @app.route("/estimate", methods=['POST'])
 def estimate():
