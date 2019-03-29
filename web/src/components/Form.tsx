@@ -41,11 +41,18 @@ class Form extends Component {
         }
     }
 
+    handleSubmit(container: DLBContainer) {
+        return (e: React.FormEvent<HTMLFormElement>) => {
+            container.postEstimate()
+            e.preventDefault()
+        }
+    }
+
     render() {
         return (
             <Subscribe to={[DLBContainer]}>
                 {(container: DLBContainer) =>
-                    <form noValidate autoComplete="off">
+                    <form onSubmit={this.handleSubmit(container)} noValidate autoComplete="off">
                         <div>
                             <div>
                                 <TextField
@@ -106,6 +113,11 @@ class Form extends Component {
                                     onChange={this.handleLac(container)}
                                     margin="normal"
                                 />
+                            </div>
+                            <div>
+                                <Button type="submit" variant="outlined" color="primary" disabled={!container.canSendRequest()}>
+                                    Estimate
+                                </Button>
                             </div>
                         </div>
                     </form>

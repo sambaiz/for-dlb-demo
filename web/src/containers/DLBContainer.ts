@@ -19,39 +19,33 @@ class DLBContainer extends Container<State> {
 
   changeAge(value: number) {
     this.setState({ age: value });
-    this.postEstimate()
   }
 
   changeBMI(value: number) {
     this.setState({ BMI: value });
-    this.postEstimate()
   }
 
   changeHbA1c(value: number) {
     this.setState({ HbA1c: value });
-    this.postEstimate()
   }
 
   changeWBC(value: number) {
     this.setState({ WBC: value });
-    this.postEstimate()
   }
 
   changeCRP(value: number) {
     this.setState({ CRP: value });
-    this.postEstimate()
   }
 
   changeLac(value: number) {
     this.setState({ Lac: value });
-    this.postEstimate()
   }
 
 
 
   async postEstimate() {
-    if (this.shouldShowResult) {
-      const resp = await axios.post<Response>(`http://localhost:3001/estimate`, {
+    if (this.canSendRequest()) {
+      const resp = await axios.post<Response>(`http://localhost:5000/estimate`, {
         data: [this.state.age, this.state.HbA1c, this.state.BMI, this.state.WBC, this.state.CRP, this.state.Lac]
       })
       const data = resp.data
@@ -59,7 +53,7 @@ class DLBContainer extends Container<State> {
     }
   }
 
-  shouldShowResult(): boolean {
+  canSendRequest(): boolean {
     return typeof this.state.age !== 'undefined' &&
       typeof this.state.BMI !== 'undefined' &&
       typeof this.state.HbA1c !== 'undefined' &&

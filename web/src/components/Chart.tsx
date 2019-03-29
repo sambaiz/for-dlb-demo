@@ -5,13 +5,13 @@ import { BarChart, XAxis, Bar, Legend } from 'recharts'
 
 class Chart extends Component {
     data(container: DLBContainer) {
-        if (container.shouldShowResult()) {
+        if (container.state.treatedScore && container.state.untreatedScore) {
             return [{
                 name: "PMX非投与",
-                予想ICU滞在時間: container.state.BMI! * container.state.CRP!
+                予想ICU滞在時間: Number.parseFloat(container.state.untreatedScore.toFixed(2))
             }, {
                 name: "PMX投与",
-                予想ICU滞在時間: container.state.BMI! + container.state.CRP!
+                予想ICU滞在時間: Number.parseFloat(container.state.treatedScore.toFixed(2))
             }]
         }
     }
