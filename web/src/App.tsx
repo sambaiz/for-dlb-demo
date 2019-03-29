@@ -13,7 +13,7 @@ class App extends Component {
       <Provider>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" color="inherit">PMX投与判定器</Typography>
+            <Typography variant="h6" color="inherit">PMX effect predictor</Typography>
           </Toolbar>
         </AppBar>
         <div className="App">
