@@ -8,10 +8,10 @@ class Chart extends Component {
         if (container.state.treatedScore && container.state.untreatedScore) {
             return [{
                 name: "PMX非投与",
-                予想ICU滞在時間: Number.parseFloat(container.state.untreatedScore.toFixed(2))
+                生存率: Number.parseFloat(container.state.untreatedScore.toFixed(2))
             }, {
                 name: "PMX投与",
-                予想ICU滞在時間: Number.parseFloat(container.state.treatedScore.toFixed(2))
+                生存率: Number.parseFloat(container.state.treatedScore.toFixed(2))
             }]
         }
     }
@@ -22,7 +22,7 @@ class Chart extends Component {
                     <div>
                         <BarChart width={300} height={300} data={this.data(container)} margin={{ top: 20 }}>
                             <XAxis dataKey="name" />
-                            <Bar dataKey="予想ICU滞在時間" fill="#82ca9d" label={{ position: 'top' }} />
+                            <Bar dataKey="生存率" fill="#82ca9d" label={{ position: 'top' }} />
                             <Legend />
                         </BarChart>
                     </div>
