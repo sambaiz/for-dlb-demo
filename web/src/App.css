@@ -1,0 +1,11 @@
+.App {
+  margin: 20px 40px;
+}
+
+.Form {}
+
+.Chart {
+  position: absolute;
+  left: 300px;
+  top: 100px;
+}
