@@ -7,10 +7,10 @@ class Chart extends Component {
     data(container: DLBContainer) {
         if (container.state.treatedScore && container.state.untreatedScore) {
             return [{
-                name: "PMX非投与",
+                name: "PMX非施行",
                 生存率: Number.parseFloat(container.state.untreatedScore.toFixed(2))
             }, {
-                name: "PMX投与",
+                name: "PMX施行",
                 生存率: Number.parseFloat(container.state.treatedScore.toFixed(2))
             }]
         }
